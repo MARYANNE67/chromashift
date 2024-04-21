@@ -17,7 +17,7 @@ export interface Image_ extends Document{
         firstName: string;
         lastName: string;
     } 
-}
+};
 
 const ImageSchema = new Schema({
     title: {

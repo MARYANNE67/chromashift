@@ -1,3 +1,5 @@
+import { Image_ } from "@/lib/models/image.model";
+
 declare type CreateUserType = {
     clerkId: string; 
     email: string; 
