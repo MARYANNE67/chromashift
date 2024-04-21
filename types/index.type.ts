@@ -92,7 +92,7 @@ export declare type Transformations = {
   | "removeBackground";
 
 // ====== URL QUERY Type
-declare type FormUrlQueryType = {
+export declare type FormUrlQueryType = {
   searchType: string;
   key: string;
   value: string | number | null;
@@ -104,7 +104,7 @@ declare type UrlQueryType = {
   value: string | null;
 };
 
-declare type RemoveUrlQueryType = {
+export declare type RemoveUrlQueryType = {
   searchType: string;
   keysToRemove: string[];
 };
