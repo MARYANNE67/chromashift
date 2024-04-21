@@ -1,6 +1,6 @@
 import {Schema, Document, model, models} from 'mongoose'
 
-export interface Image extends Document{
+export interface Image_ extends Document{
     title: string;
     transformationType: string;
     publicId: string;

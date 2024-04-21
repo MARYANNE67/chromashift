@@ -51,23 +51,23 @@ export const dataUrl = `data:image/svg+xml;base64,${toBase64(
 
 
 export const formUrlQuery = ({
-  searchParams,
+  searchType,
   key,
   value,
-}: FormUrlQueryParams) => {
-  const params = { ...qs.parse(searchParams.toString()), [key]: value };
+}: FormUrlQueryType) => {
+  const Type = { ...qs.parse(searchType.toString()), [key]: value };
 
-  return `${window.location.pathname}?${qs.stringify(params, {
+  return `${window.location.pathname}?${qs.stringify(Type, {
     skipNulls: true,
   })}`;
 };
 
 
 export function removeKeysFromQuery({
-  searchParams,
+  searchType,
   keysToRemove,
-}: RemoveUrlQueryParams) {
-  const currentUrl = qs.parse(searchParams);
+}: RemoveUrlQueryType) {
+  const currentUrl = qs.parse(searchType);
 
   keysToRemove.forEach((key) => {
     delete currentUrl[key];
