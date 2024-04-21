@@ -1,5 +1,5 @@
 import { type ClassValue, clsx } from "clsx";
-// import qs from "qs";
+import qs from "qs";
 import { twMerge } from "tailwind-merge";
 
 // import { aspectRatioOptions } from "@/constants";
@@ -8,7 +8,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-// ERROR HANDLER
+// error handle
 export const handleError = (error: unknown) => {
   if (error instanceof Error) {
     // This is a native JavaScript error (e.g., TypeError, RangeError)
@@ -25,7 +25,7 @@ export const handleError = (error: unknown) => {
   }
 };
 
-// PLACEHOLDER LOADER - while image is transforming
+
 const shimmer = (w: number, h: number) => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
@@ -48,46 +48,45 @@ const toBase64 = (str: string) =>
 export const dataUrl = `data:image/svg+xml;base64,${toBase64(
   shimmer(1000, 1000)
 )}`;
-// ==== End
 
-// // FORM URL QUERY
-// export const formUrlQuery = ({
-//   searchParams,
-//   key,
-//   value,
-// }: FormUrlQueryParams) => {
-//   const params = { ...qs.parse(searchParams.toString()), [key]: value };
 
-//   return `${window.location.pathname}?${qs.stringify(params, {
-//     skipNulls: true,
-//   })}`;
-// };
+export const formUrlQuery = ({
+  searchParams,
+  key,
+  value,
+}: FormUrlQueryParams) => {
+  const params = { ...qs.parse(searchParams.toString()), [key]: value };
 
-// // REMOVE KEY FROM QUERY
-// export function removeKeysFromQuery({
-//   searchParams,
-//   keysToRemove,
-// }: RemoveUrlQueryParams) {
-//   const currentUrl = qs.parse(searchParams);
+  return `${window.location.pathname}?${qs.stringify(params, {
+    skipNulls: true,
+  })}`;
+};
 
-//   keysToRemove.forEach((key) => {
-//     delete currentUrl[key];
-//   });
 
-//   // Remove null or undefined values
-//   Object.keys(currentUrl).forEach(
-//     (key) => currentUrl[key] == null && delete currentUrl[key]
-//   );
+export function removeKeysFromQuery({
+  searchParams,
+  keysToRemove,
+}: RemoveUrlQueryParams) {
+  const currentUrl = qs.parse(searchParams);
 
-//   return `${window.location.pathname}?${qs.stringify(currentUrl)}`;
-// }
+  keysToRemove.forEach((key) => {
+    delete currentUrl[key];
+  });
 
-// // DEBOUNCE
-// export const debounce = (func: (...args: any[]) => void, delay: number) => {
-//   let timeoutId: NodeJS.Timeout | null;
-//   return (...args: any[]) => {
-//     if (timeoutId) clearTimeout(timeoutId);
-//     timeoutId = setTimeout(() => func.apply(null, args), delay);
-//   };
-// };
+  // Remove null or undefined values
+  Object.keys(currentUrl).forEach(
+    (key) => currentUrl[key] == null && delete currentUrl[key]
+  );
+
+  return `${window.location.pathname}?${qs.stringify(currentUrl)}`;
+}
+
+
+export const debounce = (func: (...args: any[]) => void, delay: number) => {
+  let timeoutId: NodeJS.Timeout | null;
+  return (...args: any[]) => {
+    if (timeoutId) clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => func.apply(null, args), delay);
+  };
+};
 

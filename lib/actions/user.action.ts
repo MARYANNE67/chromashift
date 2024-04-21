@@ -3,7 +3,6 @@
 import User from '../models/user.model'
 import {connectionToDatabase} from '../mongoose'
 import {handleError} from '../utils'
-import {CreateUserType, UpdateUserType} from '../../types/index.type'
 
 // create users
 export async function createUser(user: CreateUserType){
