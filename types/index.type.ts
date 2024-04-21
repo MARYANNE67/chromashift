@@ -1,6 +1,6 @@
 import { Image_ } from "@/lib/models/image.model";
 
-declare type CreateUserType = {
+export declare type CreateUserType = {
     clerkId: string; 
     email: string; 
     username: string; 
@@ -9,7 +9,7 @@ declare type CreateUserType = {
     lastName: string; 
 } 
 
-declare type UpdateUserType ={
+export declare type UpdateUserType ={
     username: string;
     photo: string;
     firstName: string;
@@ -51,7 +51,7 @@ declare type AddImageType ={
     path: string
 }
 
-declare type Transformations = {
+export declare type Transformations = {
     restore?: boolean;
     fillBackground?: boolean;
     remove?: {
@@ -84,7 +84,7 @@ declare type Transformations = {
     createdAt: Date;
   };
 
-  declare type TransformationTypeKey =
+  export declare type TransformationTypeKey =
   | "restore"
   | "fill"
   | "remove"
