@@ -1,4 +1,4 @@
-import { Image_ } from "@/lib/models/image.model";
+import { Image_ } from "@/lib/database/models/image.model";
 
 export declare type CreateUserType = {
     clerkId: string; 

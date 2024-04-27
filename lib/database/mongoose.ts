@@ -31,4 +31,5 @@ export const connectionToDatabase = async () => {
     })
 
     cached.conn = await cached.promise;
+    return cached.conn;
 }

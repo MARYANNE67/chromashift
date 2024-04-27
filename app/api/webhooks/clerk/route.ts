@@ -62,7 +62,7 @@ export async function POST(req: Request) {
 
     const user : CreateUserType = {
         clerkId: id,
-        email: email_addresses[0]?.email_address ,
+        email: email_addresses[0].email_address ,
         username: username!,
         photo: image_url,
         firstName: first_name,
@@ -71,15 +71,14 @@ export async function POST(req: Request) {
 
         try{
             const newUser = await createUser(user);
-            if(newUser){
-                await clerkClient.users.updateUserMetadata(id,{ 
-                    publicMetadata: 
-                        newUser.clerkId
-                    }
-                );
-
-                return NextResponse.json({message: "SUCCESS: Create user", user: newUser });
-            }else throw new Error("ERROR: User creation faile");
+            if (newUser) {
+              await clerkClient.users.updateUserMetadata(id, {
+                publicMetadata: {
+                  userId: newUser._id,
+                },
+              } );
+            return NextResponse.json({message: "SUCCESS: Create user", user: newUser });
+            } else throw new Error("ERROR: User creation faile");
         }catch(error){
             handleError(error);
         }
@@ -98,8 +97,8 @@ export async function POST(req: Request) {
 
     try{    
         const updatedUser = await updateUser(id, user);
-        if(updateUser) return NextResponse.json({message: "SUCCESS: Updated user", user: updateUser });
-        else throw new Error("ERROR: User update failed")
+        return  NextResponse.json({message: "SUCCESS: Updated user", user: updatedUser });
+
     }catch(error){
         handleError(error)
     }
@@ -111,8 +110,7 @@ export async function POST(req: Request) {
 
     try{    
         const deletedUser = await deleteUser(id!);
-        if(deletedUser) return NextResponse.json({message: "SUCCESS: Updated user", user: deletedUser });
-        else throw new Error("ERROR: User deletion failed")
+        return NextResponse.json({message: "SUCCESS: Updated user", user: deletedUser });
     }catch(error){
         handleError(error)
     }
