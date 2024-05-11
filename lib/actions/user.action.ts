@@ -21,7 +21,7 @@ export async function createUser(user: CreateUserType){
 }
 
 //get users
-export async function getUser(userId: string){
+export async function getUserById(userId: string){
     try{
         await connectionToDatabase();
 
@@ -33,6 +33,7 @@ export async function getUser(userId: string){
         handleError(error)
     }
 }
+
 
 // update users 
 export async function updateUser(clerkId: string, user: UpdateUserType){
@@ -67,6 +68,27 @@ export async function deleteUser(clerkId: string){
 
         return deletedUser ? JSON.parse(JSON.stringify(deletedUser)) : null;
     }catch(error){
+        handleError(error)
+    }
+}
+
+//use credits
+export async function useCredits(userId: string, creditFee: number){
+
+    try{
+        connectionToDatabase();
+
+        const updatedCredits = await UserModel.findOneAndUpdate(
+            {_is: userId},
+            { $inc: {credits: creditFee}},
+            { new: true}
+        )
+
+        if(!updatedCredits) throw new Error("User credits update failed");
+
+        return JSON.parse(JSON.stringify(updatedCredits));
+    }
+    catch(error){
         handleError(error)
     }
 }

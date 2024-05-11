@@ -27,7 +27,7 @@ const Sidebar = () => {
                 const ifActive = link.route === pathname
                 return(
                   <li key={link.route} className={`sidebar-nav_element group ${
-                    ifActive ? 'bg-purple-gradient text-white' : 'text-gray-700'
+                    ifActive ? 'bg-blue-400 text-white' : 'text-gray-700'
                   }`}>
                     <Link className="sidebar-link" href={link.route}>
                       <Image 
@@ -48,7 +48,7 @@ const Sidebar = () => {
                 const ifActive = link.route === pathname
                 return(
                   <li key={link.route} className={`sidebar-nav_element group ${
-                    ifActive ? 'bg-purple-gradient text-white' : 'text-gray-700'
+                    ifActive ? 'bg-blue-400 text-white' : 'text-gray-700'
                   }`}>
                     <Link className="sidebar-link" href={link.route}>
                       <Image 
@@ -70,7 +70,7 @@ const Sidebar = () => {
 
           {/* Logic for when user is signed out  */}
           <SignedOut>
-            <Button asChild className='button bg-purple-gradient bg-cover'>
+            <Button asChild className='button bg-blue-200 bg-cover'>
               <Link href='/sign-in'>Login</Link>
             </Button>
           </SignedOut>

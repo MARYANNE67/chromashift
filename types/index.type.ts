@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Image_ } from "@/lib/database/models/image.model";
 
 export declare type CreateUserType = {
@@ -16,40 +17,6 @@ export declare type UpdateUserType ={
     lastName: string;
 }
 
-declare type UpdateImageType ={
-    image:{
-        transformationType: string;
-        publicId: string;
-        secureUrl: string;
-        width: number;
-        height: number;
-        config: object;
-        transformationUrl: string;
-        aspectRatio: string;
-        color: string;
-        prompt?: string;   
-    };
-    userId: string;
-    path: string
-}
-
-
-declare type AddImageType ={
-    image:{
-        transformationType: string;
-        publicId: string;
-        secureUrl: string;
-        width: number;
-        height: number;
-        config: object;
-        transformationUrl: string;
-        aspectRatio: string;
-        color: string;
-        prompt?: string;   
-    };
-    userId: string;
-    path: string
-}
 
 export declare type Transformations = {
     restore?: boolean;
@@ -68,14 +35,53 @@ export declare type Transformations = {
   };
   
   // ====== TRANSACTION Type
-  declare type CheckoutTransactionType = {
+export declare type CheckoutTransactionType = {
     plan: string;
     credits: number;
     amount: number;
     buyerId: string;
   };
   
-  declare type CreateTransactionType = {
+
+  export declare type AddImageType ={
+    image: {
+      title: string;
+      publicId: string;
+      transformationType: string;
+      width: number;
+      height: number;
+      config: any;
+      secureURL: string;
+      transformationURL: string;
+      aspectRatio: string | undefined;
+      prompt: string | undefined;
+      color: string | undefined;
+    };
+    userId: string;
+    path: string;
+  };
+
+  
+export declare type UpdateImageType = {
+  image: {
+    _id: string;
+    title: string;
+    publicId: string;
+    transformationType: string;
+    width: number;
+    height: number;
+    config: any;
+    secureURL: string;
+    transformationURL: string;
+    aspectRatio: string | undefined;
+    prompt: string | undefined;
+    color: string | undefined;
+  };
+  userId: string;
+  path: string;
+};
+
+export declare type CreateTransactionType = {
     stripeId: string;
     amount: number;
     credits: number;
@@ -98,7 +104,7 @@ export declare type FormUrlQueryType = {
   value: string | number | null;
 };
 
-declare type UrlQueryType = {
+export declare type UrlQueryType = {
   Type: string;
   key: string;
   value: string | null;
@@ -109,12 +115,12 @@ export declare type RemoveUrlQueryType = {
   keysToRemove: string[];
 };
 
-declare type SearchParamProps = {
+ export declare type SearchParamProps = {
   Type: { id: string; type: TransformationTypeKey };
   searchType: { [key: string]: string | string[] | undefined };
 };
 
-declare type TransformationFormProps = {
+export declare type TransformationFormProps = {
   action: "Add" | "Update";
   userId: string;
   type: TransformationTypeKey;
@@ -123,12 +129,12 @@ declare type TransformationFormProps = {
   config?: Transformations | null;
 };
 
-declare type TransformedImageProps = {
+export declare type FinalImageType = {
     image: any;
     type: string;
     title: string;
     transformationConfig: Transformations | null;
     isTransforming: boolean;
-    hasDownload?: boolean;
+    hasDownloaded?: boolean;
     setIsTransforming?: React.Dispatch<React.SetStateAction<boolean>>;
   };

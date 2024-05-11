@@ -32,7 +32,9 @@ const MobileNav = () => {
                     </SheetTrigger>
                     <SheetContent className='sheet-content sm:w-64'>
                       <>
-                        <Image src='/assets/images/logo-text.svg' alt='logo' width={152} height={23}/>
+                        <Image src='/assets/images/logo-text.svg' alt='logo' 
+                        className='logo-image'
+                        width={190} height={20}/>
                         {/* show nav links only when user is signed in */}
                         <ul className='header-nav_elements'>
                         {navLinks.map((link) =>{
@@ -40,14 +42,15 @@ const MobileNav = () => {
 
                             return(
                               <li key={link.route} className={`${
-                                  ifActive && 'gradient-text'} p-18 flex
-                                  whitespace-nowrap text-dark-700}`}>
+                                  ifActive && 'bg-blue-400 text-white w-full rounded-full'} p-18 flex 
+                                  whitespace-nowrap text-white}`}>
                                   <Link className="sidebar-link cursor-pointer" href={link.route}>
                                   <Image 
                                       src={link.icon}
                                       alt='logo'
                                       width={24}
                                       height={24}
+                                      className={`${ifActive && 'brightness-200'}`}
                                   />
                                   {link.label}
                                   </Link>
@@ -61,7 +64,7 @@ const MobileNav = () => {
            </SignedIn>
 
           <SignedOut>
-            <Button asChild className="button bg-purple-gradient bg-cover">
+            <Button asChild className="button bg-blue-200 bg-cover">
               <Link href="/sign-in">Login</Link>
             </Button>
          </SignedOut>

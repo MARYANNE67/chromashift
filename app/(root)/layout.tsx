@@ -1,5 +1,6 @@
 import MobileNav from '@/components/shared/MobileNav';
 import Sidebar from '@/components/shared/SideBar';
+import { Toaster } from '@/components/ui/toaster';
 import React from 'react'
 
 
@@ -14,7 +15,7 @@ import React from 'react'
               {children}    {/*display route group children info*/}
             </div>
         </div>
-
+    <Toaster/>
     </main>
   )
 }

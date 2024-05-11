@@ -30,12 +30,21 @@ module.exports = {
           500: "#7857FF",
           600: "#4318FF",
         },
+        blue: {
+          50:"#adb5bd",
+          100:"#6c757d",
+          200: "#003566",
+          400: "#14213d",
+          500: "#000814",
+        },
         dark: {
           400: "#7986AC",
           500: "#606C80",
           600: "#2B3674",
           700: "#384262",
+          800: "#003566",
         },
+       
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
